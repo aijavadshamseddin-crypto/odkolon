@@ -11,6 +11,7 @@ body { font-family:'Vazirmatn',Tahoma,sans-serif; background:#f5f5f7; color:#222
 a { text-decoration:none; color:inherit; cursor:pointer; }
 .container { max-width:1200px; margin:0 auto; padding:0 16px; }
 
+/* هدر */
 .top-bar { background:#fff; border-bottom:1px solid #e5e5e5; }
 .top-inner { display:flex; align-items:center; gap:16px; padding:12px 16px; }
 .logo { font-size:28px; font-weight:900; color:#e63946; letter-spacing:-1px; }
@@ -30,6 +31,7 @@ a { text-decoration:none; color:inherit; cursor:pointer; }
 .submenu a { display:block; padding:10px 18px; color:#333; font-size:13px; border-bottom:1px solid #f0f0f0; }
 .submenu a:hover { background:#f5f5f7; color:#e63946; }
 
+/* بخش‌ها */
 .hero { padding:16px 0; }
 .hero-slide { background:linear-gradient(135deg,#1d1d2b,#3a3a5c); color:#fff; border-radius:12px; padding:44px 36px; text-align:center; }
 .hero-slide h1 { font-size:32px; margin-bottom:8px; }
@@ -39,10 +41,13 @@ a { text-decoration:none; color:inherit; cursor:pointer; }
 .section { padding:28px 0; }
 .section-title { font-size:20px; margin-bottom:18px; border-right:4px solid #e63946; padding-right:10px; font-weight:800; }
 
+/* کارت محصول */
 .product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
 .product-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,.06); transition:.2s; display:flex; flex-direction:column; position:relative; border:1px solid #eee; }
 .product-card:hover { transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.1); }
-.product-card img { width:100%; height:190px; object-fit:cover; background:#eee; cursor:pointer; }
+.product-card .img-wrapper { width:100%; height:190px; background:#f0f0f2; cursor:pointer; overflow:hidden; position:relative; }
+.product-card .img-wrapper img { width:100%; height:100%; object-fit:cover; transition:transform 0.3s; }
+.product-card:hover .img-wrapper img { transform:scale(1.1); }
 .product-card .info { padding:12px; display:flex; flex-direction:column; gap:5px; flex:1; }
 .product-card .brand { font-size:11px; color:#999; }
 .product-card .name { font-size:14px; font-weight:600; cursor:pointer; line-height:1.4; }
@@ -54,26 +59,35 @@ a { text-decoration:none; color:inherit; cursor:pointer; }
 .badge { position:absolute; top:8px; right:8px; background:#e63946; color:#fff; font-size:10px; padding:3px 8px; border-radius:4px; z-index:2; }
 .badge.arabic { background:#2a9d8f; }
 
+/* فیلتر */
 .filter-bar { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
 .filter-btn { padding:8px 18px; border:1px solid #ddd; background:#fff; border-radius:20px; cursor:pointer; font-family:inherit; font-size:13px; transition:.2s; }
 .filter-btn.active { background:#1d1d2b; color:#fff; border-color:#1d1d2b; }
 
 .footer { background:#1d1d2b; color:#aaa; text-align:center; padding:20px; margin-top:30px; font-size:13px; }
 
+/* صفحه جزئیات */
 .detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; background:#fff; padding:22px; border-radius:12px; border:1px solid #eee; }
-.detail-grid img { width:100%; border-radius:10px; object-fit:cover; }
+.detail-grid .img-wrapper { width:100%; height:350px; background:#f0f0f2; border-radius:10px; overflow:hidden; }
+.detail-grid .img-wrapper img { width:100%; height:100%; object-fit:cover; }
 .detail-info h1 { font-size:24px; margin:6px 0; }
 .detail-info .brand { color:#888; font-size:14px; }
-.detail-info .tag { display:inline-block; background:#eef6f5; color:#2a9d8f; padding:3px 10px; border-radius:4px; font-size:12px; margin:6px 0; }
+.detail-info .tags { display:flex; gap:6px; margin:8px 0; flex-wrap:wrap; }
+.detail-info .tag { display:inline-block; background:#eef6f5; color:#2a9d8f; padding:3px 10px; border-radius:4px; font-size:12px; }
+.detail-info .tag.gender { background:#fff0f1; color:#e63946; }
 .detail-info .rating { margin:8px 0; color:#f59e0b; font-size:14px; }
-.detail-info .desc { color:#555; margin:14px 0; font-size:14px; line-height:1.8; }
+.detail-info .desc { color:#555; margin:14px 0; font-size:14px; line-height:1.8; background:#fafafa; padding:12px; border-radius:8px; border-right:3px solid #e63946; }
+.detail-info .notes { margin:10px 0; font-size:13px; color:#444; }
+.detail-info .notes strong { color:#1d1d2b; display:block; margin-bottom:4px; }
 .detail-info .price { font-size:22px; color:#e63946; font-weight:800; }
-.detail-info .btn-primary { background:#e63946; margin-top:16px; }
+.detail-info .btn-primary { background:#e63946; margin-top:16px; width:100%; }
 
+/* سبد خرید */
 #cart-box { background:#fff; border-radius:12px; padding:20px; border:1px solid #eee; }
 .empty { text-align:center; padding:40px; color:#999; }
 .cart-item { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f0f0f0; }
-.cart-item img { width:65px; height:65px; object-fit:cover; border-radius:8px; }
+.cart-item .img-wrapper { width:65px; height:65px; background:#f0f0f2; border-radius:8px; overflow:hidden; }
+.cart-item .img-wrapper img { width:100%; height:100%; object-fit:cover; }
 .cart-item-info { flex:1; display:flex; flex-direction:column; gap:3px; font-size:14px; }
 .qty-control { display:flex; align-items:center; gap:6px; }
 .qty-control button { width:28px; height:28px; border:1px solid #ddd; background:#f9f9f9; border-radius:6px; cursor:pointer; font-size:15px; }
@@ -127,31 +141,139 @@ a { text-decoration:none; color:inherit; cursor:pointer; }
 <footer class="footer"><div class="container"><p>© ۱۴۰۴ عطرینو — فروشگاه اینترنتی ادکلن</p></div></footer>
 
 <script>
+// تابع تولید آدرس عکس واقعی از سرویس loremflickr
+// از کلمه کلیدی perfume استفاده می‌کند و برای هر محصول یک seed متفاوت می‌سازد
+function getRealImage(name, id) {
+  // استفاده از نام محصول (انگلیسی) و ID برای تنوع عکس‌ها
+  return `https://loremflickr.com/400/400/perfume,bottle,${id}?lock=${id}`;
+}
+
+// داده‌های محصولات با نت‌های دقیق (بر اساس Fragrantica)
 const products = [
   // ---------- کلاسیک مردانه ----------
-  { id:1, name:"دیور ساواج", brand:"Dior", price:4200000, oldPrice:4800000, gender:"men", origin:"classic", img:"https://picsum.photos/seed/dior-sauvage/400/400", rating:4.8, bestSeller:true, isNew:false },
-  { id:2, name:"بلو د شانل", brand:"Chanel", price:3900000, oldPrice:4500000, gender:"men", origin:"classic", img:"https://picsum.photos/seed/chanel-blue/400/400", rating:4.7, bestSeller:true, isNew:false },
-  { id:3, name:"آکوا دی جیو", brand:"Giorgio Armani", price:3600000, oldPrice:0, gender:"men", origin:"classic", img:"https://picsum.photos/seed/armani-aqua/400/400", rating:4.6, bestSeller:false, isNew:true },
-  { id:4, name:"کرید اونتوس", brand:"Creed", price:8900000, oldPrice:9500000, gender:"men", origin:"classic", img:"https://picsum.photos/seed/creed-aventus/400/400", rating:4.9, bestSeller:true, isNew:false },
-  { id:5, name:"توم فورد نویر", brand:"Tom Ford", price:7200000, oldPrice:0, gender:"men", origin:"classic", img:"https://picsum.photos/seed/tomford-noir/400/400", rating:4.7, bestSeller:false, isNew:true },
+  { 
+    id:1, name:"دیور ساواج", brand:"Dior", price:4200000, oldPrice:4800000, gender:"men", origin:"classic", 
+    rating:4.8, bestSeller:true, isNew:false,
+    desc:"رایحه‌ای تازه، ادویه‌ای و چوبی که ترکیبی از طراوت مرکبات با گرمای وانیل است. انتخابی همه‌پسند و ماندگار برای استفاده روزانه.",
+    notes:"برگاموت، فلفل سیچوان، اسطوخودوس، وانیل"
+  },
+  { 
+    id:2, name:"بلو د شانل", brand:"Chanel", price:3900000, oldPrice:4500000, gender:"men", origin:"classic", 
+    rating:4.7, bestSeller:true, isNew:false,
+    desc:"ترکیبی کلاسیک از مرکبات و چوب که حس پاکی و اعتماد به نفس را منتقل می‌کند. مناسب برای محیط کار و استفاده روزمره.",
+    notes:"گریپ‌فروت، لیمو، نعنا، فلفل صورتی، زنجبیل، جاسمین، کندر، سدر، وتیور"
+  },
+  { 
+    id:3, name:"آکوا دی جیو", brand:"Giorgio Armani", price:3600000, oldPrice:0, gender:"men", origin:"classic", 
+    rating:4.6, bestSeller:false, isNew:true,
+    desc:"رایحه‌ای آبی و خنک با الهام از دریا. ترکیبی از طراوت مرکبات و گل‌های سفید که حس آزادی و آرامش را القا می‌کند.",
+    notes:"لیمو، برگاموت، نارنج، یاس، رزماری، نت‌های دریایی، مشک، سدر"
+  },
+  { 
+    id:4, name:"کرید اونتوس", brand:"Creed", price:8900000, oldPrice:9500000, gender:"men", origin:"classic", 
+    rating:4.9, bestSeller:true, isNew:false,
+    desc:"نماد موفقیت و لوکس بودن. ترکیبی میوه‌ای و چوبی با آناناس و سیب که رایحه‌ای منحصربفرد و ماندگار ایجاد می‌کند.",
+    notes:"آناناس، سیب، برگاموت، فلفل صورتی، توس، مشک، خزه بلوط"
+  },
+  { 
+    id:5, name:"توم فورد نویر", brand:"Tom Ford", price:7200000, oldPrice:0, gender:"men", origin:"classic", 
+    rating:4.7, bestSeller:false, isNew:true,
+    desc:"رایحه‌ای مرموز، گرم و پودری. ترکیبی از گل رز و ادویه‌ها با پایه‌ای وانیلی که حس تاریکی و شکوه را منتقل می‌کند.",
+    notes:"گل رز، فلفل، پچولی، وانیل، مشک، نت‌های حیوانی"
+  },
   // ---------- کلاسیک زنانه ----------
-  { id:6, name:"کوکو مادمازل", brand:"Chanel", price:5100000, oldPrice:0, gender:"women", origin:"classic", img:"https://picsum.photos/seed/chanel-coco/400/400", rating:4.9, bestSeller:true, isNew:false },
-  { id:7, name:"میس دیور", brand:"Dior", price:4600000, oldPrice:5200000, gender:"women", origin:"classic", img:"https://picsum.photos/seed/dior-miss/400/400", rating:4.8, bestSeller:true, isNew:false },
-  { id:8, name:"لانکوم لا وی است بل", brand:"Lancome", price:4300000, oldPrice:0, gender:"women", origin:"classic", img:"https://picsum.photos/seed/lancome-vie/400/400", rating:4.6, bestSeller:false, isNew:true },
-  { id:9, name:"ایو سن لورن مون پاریس", brand:"YSL", price:4900000, oldPrice:0, gender:"women", origin:"classic", img:"https://picsum.photos/seed/ysl-paris/400/400", rating:4.7, bestSeller:false, isNew:true },
-  { id:10, name:"گورلن لا پتیت روب نوآر", brand:"Guerlain", price:5500000, oldPrice:6000000, gender:"women", origin:"classic", img:"https://picsum.photos/seed/guerlain-noir/400/400", rating:4.5, bestSeller:false, isNew:false },
+  { 
+    id:6, name:"کوکو مادمازل", brand:"Chanel", price:5100000, oldPrice:0, gender:"women", origin:"classic", 
+    rating:4.9, bestSeller:true, isNew:false,
+    desc:"رایحه‌ای شرقی-گلی با شخصیتی قوی و مدرن. ترکیبی از طراوت پرتقال با شیرینی گل‌ها و عمق پچولی.",
+    notes:"برگاموت، پرتقال، گل رز، یاس، پچولی، وتیور، وانیل"
+  },
+  { 
+    id:7, name:"میس دیور", brand:"Dior", price:4600000, oldPrice:5200000, gender:"women", origin:"classic", 
+    rating:4.8, bestSeller:true, isNew:false,
+    desc:"رایحه‌ای گلی و میوه‌ای که حس زنانگی و لطافت را به تصویر می‌کشد. ترکیبی از هلو و گل رز با پایه‌ای مشکین.",
+    notes:"هلو، نارنگی، گل رز، یاس، زنبق، مشک، وتیور"
+  },
+  { 
+    id:8, name:"لانکوم لا وی است بل", brand:"Lancome", price:4300000, oldPrice:0, gender:"women", origin:"classic", 
+    rating:4.6, bestSeller:false, isNew:true,
+    desc:"رایحه‌ای شیرین و خوراکی با قلب گل‌های سفید. ترکیبی از پرالین و وانیل که حس خوشبختی را منتقل می‌کند.",
+    notes:"گلابی، انگور فرنگی سیاه، زنبق، یاس، پرالین، وانیل، پچولی"
+  },
+  { 
+    id:9, name:"ایو سن لورن مون پاریس", brand:"YSL", price:4900000, oldPrice:0, gender:"women", origin:"classic", 
+    rating:4.7, bestSeller:false, isNew:true,
+    desc:"رایحه‌ای عاشقانه و شیرین با توت‌فرنگی و گل‌های سفید. حس پاریس مدرن و عاشقانه را به همراه دارد.",
+    notes:"توت‌فرنگی، تمشک، گلابی، برگاموت، گل صد تومانی، یاس، پچولی، مشک"
+  },
+  { 
+    id:10, name:"گورلن لا پتیت روب نوآر", brand:"Guerlain", price:5500000, oldPrice:6000000, gender:"women", origin:"classic", 
+    rating:4.5, bestSeller:false, isNew:false,
+    desc:"رایحه‌ای شیرین و میوه‌ای با شخصیتی بازیگوش. ترکیبی از گیلاس و بادام که حس لطافت و شیرینی را منتقل می‌کند.",
+    notes:"گیلاس سیاه، بادام، توت‌فرنگی، گل رز، پچولی، وانیل"
+  },
   // ---------- عربی مردانه ----------
-  { id:11, name:"لطافه خمره", brand:"Lattafa", price:1800000, oldPrice:2200000, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/lattafa-khamrah/400/400", rating:4.7, bestSeller:true, isNew:false },
-  { id:12, name:"افنان ۹ پی ام", brand:"Afnan", price:1500000, oldPrice:0, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/afnan-9pm/400/400", rating:4.5, bestSeller:true, isNew:false },
-  { id:13, name:"آرماف کلاب دی نویت", brand:"Armaf", price:1700000, oldPrice:2000000, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/armaf-club/400/400", rating:4.8, bestSeller:true, isNew:false },
-  { id:14, name:"رصاصی هاواس", brand:"Rasasi", price:1900000, oldPrice:0, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/rasasi-hawas/400/400", rating:4.6, bestSeller:false, isNew:true },
-  { id:15, name:"لطافه رامز سیلور", brand:"Lattafa", price:1300000, oldPrice:1600000, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/lattafa-ramz/400/400", rating:4.4, bestSeller:false, isNew:true },
+  { 
+    id:11, name:"لطافه خمره", brand:"Lattafa", price:1800000, oldPrice:2200000, gender:"men", origin:"arabic", 
+    rating:4.7, bestSeller:true, isNew:false,
+    desc:"رایحه‌ای شرقی و گرم با ترکیبی از دارچین و خرما. حس اصالت عربی و مهمان‌نوازی را منتقل می‌کند.",
+    notes:"دارچین، خرما، زعفران، عود، وانیل، مشک"
+  },
+  { 
+    id:12, name:"افنان ۹ پی ام", brand:"Afnan", price:1500000, oldPrice:0, gender:"men", origin:"arabic", 
+    rating:4.5, bestSeller:true, isNew:false,
+    desc:"رایحه‌ای مدرن و شبانه با ترکیبی از میوه‌های شیرین و چوب. مناسب برای مهمانی‌های شبانه.",
+    notes:"سیب، دارچین، اسطوخودوس، پرالین، وانیل، چوب صندل"
+  },
+  { 
+    id:13, name:"آرماف کلاب دی نویت", brand:"Armaf", price:1700000, oldPrice:2000000, gender:"men", origin:"arabic", 
+    rating:4.8, bestSeller:true, isNew:false,
+    desc:"رایحه‌ای جذاب و مردانه با ترکیبی از مرکبات و چوب. یکی از محبوب‌ترین عطرهای عربی در ایران.",
+    notes:"لیمو، سیب، برگاموت، نعناع، یاس، چوب صندل، وانیل"
+  },
+  { 
+    id:14, name:"رصاصی هاواس", brand:"Rasasi", price:1900000, oldPrice:0, gender:"men", origin:"arabic", 
+    rating:4.6, bestSeller:false, isNew:true,
+    desc:"رایحه‌ای تازه و آبی با شخصیتی قوی. ترکیبی از مرکبات و نت‌های آبی که حس انرژی و طراوت را منتقل می‌کند.",
+    notes:"برگاموت، لیمو، نت‌های آبی، یاس، مشک، چوب صندل"
+  },
+  { 
+    id:15, name:"لطافه رامز سیلور", brand:"Lattafa", price:1300000, oldPrice:1600000, gender:"men", origin:"arabic", 
+    rating:4.4, bestSeller:false, isNew:true,
+    desc:"رایحه‌ای شیرین و گرم با ترکیبی از وانیل و ادویه. مناسب برای استفاده در فصل سرد.",
+    notes:"دارچین، هل، پرالین، وانیل، عود، مشک"
+  },
   // ---------- عربی زنانه ----------
-  { id:16, name:"لطافه یارا", brand:"Lattafa", price:1400000, oldPrice:0, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/lattafa-yara/400/400", rating:4.6, bestSeller:true, isNew:false },
-  { id:17, name:"افنان ۹ پی ام پور فم", brand:"Afnan", price:1600000, oldPrice:1900000, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/afnan-pourfem/400/400", rating:4.5, bestSeller:false, isNew:true },
-  { id:18, name:"سوییس آرابین لیلی", brand:"Swiss Arabian", price:1200000, oldPrice:0, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/swiss-layali/400/400", rating:4.3, bestSeller:false, isNew:false },
-  { id:19, name:"اجمل امیر", brand:"Ajmal", price:2100000, oldPrice:2400000, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/ajmal-amir/400/400", rating:4.4, bestSeller:false, isNew:false },
-  { id:20, name:"الحمرا آنا", brand:"Al Haramain", price:1700000, oldPrice:0, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/haramain-ana/400/400", rating:4.2, bestSeller:false, isNew:true },
+  { 
+    id:16, name:"لطافه یارا", brand:"Lattafa", price:1400000, oldPrice:0, gender:"women", origin:"arabic", 
+    rating:4.6, bestSeller:true, isNew:false,
+    desc:"رایحه‌ای شیرین و گلی با ترکیبی از وانیل و میوه‌های استوایی. حس زنانگی و لطافت را منتقل می‌کند.",
+    notes:"ارکیده، هلو، پرتقال، وانیل، مشک"
+  },
+  { 
+    id:17, name:"افنان ۹ پی ام پور فم", brand:"Afnan", price:1600000, oldPrice:1900000, gender:"women", origin:"arabic", 
+    rating:4.5, bestSeller:false, isNew:true,
+    desc:"نسخه زنانه ۹ پی ام با رایحه‌ای شیرین‌تر و گلی‌تر. مناسب برای شب‌های خاص.",
+    notes:"گلابی، دارچین، پرالین، وانیل، مشک"
+  },
+  { 
+    id:18, name:"سوییس آرابین لیلی", brand:"Swiss Arabian", price:1200000, oldPrice:0, gender:"women", origin:"arabic", 
+    rating:4.3, bestSeller:false, isNew:false,
+    desc:"رایحه‌ای گلی و شرقی با ترکیبی از عود و گل رز. حس اصالت و شکوه شرقی را منتقل می‌کند.",
+    notes:"گل رز، عود، زعفران، مشک، عنبر"
+  },
+  { 
+    id:19, name:"اجمل امیر", brand:"Ajmal", price:2100000, oldPrice:2400000, gender:"women", origin:"arabic", 
+    rating:4.4, bestSeller:false, isNew:false,
+    desc:"رایحه‌ای پودری و گلی با شخصیتی کلاسیک. ترکیبی از زنبق و گل رز که حس لطافت را منتقل می‌کند.",
+    notes:"زنبق، گل رز، یاس، وانیل، مشک"
+  },
+  { 
+    id:20, name:"الحمرا آنا", brand:"Al Haramain", price:1700000, oldPrice:0, gender:"women", origin:"arabic", 
+    rating:4.2, bestSeller:false, isNew:true,
+    desc:"رایحه‌ای میوه‌ای و شیرین با ترکیبی از توت‌فرنگی و وانیل. مناسب برای استفاده روزانه.",
+    notes:"توت‌فرنگی، گل رز، وانیل، مشک"
+  },
 ];
 
 const fmt = n => n.toLocaleString('fa-IR') + ' تومان';
@@ -172,10 +294,18 @@ const addToCart = id => {
 function productCard(p) {
   const badgeLabel = p.origin === 'arabic' ? 'عربی' : '';
   const badgeClass = p.origin === 'arabic' ? 'badge arabic' : 'badge';
+  // تعیین جنسیت برای نمایش
+  let genderLabel = '';
+  if (p.gender === 'men') genderLabel = 'مردانه';
+  else if (p.gender === 'women') genderLabel = 'زنانه';
+  else genderLabel = 'یونیسکس';
+
   return `
     <div class="product-card">
       ${badgeLabel ? `<span class="${badgeClass}">${badgeLabel}</span>` : (p.oldPrice ? '<span class="badge">تخفیف</span>' : '')}
-      <img src="${p.img}" alt="${p.name}" onclick="showPage('product',${p.id})" loading="lazy">
+      <div class="img-wrapper" onclick="showPage('product',${p.id})">
+        <img src="${getRealImage(p.name, p.id)}" alt="${p.name}" loading="lazy" onerror="this.src='https://loremflickr.com/400/400/perfume,bottle?lock=1'">
+      </div>
       <div class="info">
         <span class="brand">${p.brand}</span>
         <span class="name" onclick="showPage('product',${p.id})">${p.name}</span>
@@ -212,17 +342,31 @@ function showPage(page, param) {
     renderProductList(param || 'all');
   } else if (page === 'product') {
     const p = products.find(x=>x.id===param) || products[0];
-    const tagLabel = p.origin === 'arabic' ? 'عطر عربی' : 'کلاسیک / غیرعربی';
+    let genderLabel = p.gender === 'men' ? 'مردانه' : (p.gender === 'women' ? 'زنانه' : 'یونیسکس');
+    let originLabel = p.origin === 'arabic' ? 'عربی' : 'کلاسیک / غیرعربی';
+    
     app.innerHTML = `<section class="section"><div class="container">
       <div class="detail-grid">
-        <img src="${p.img}" alt="${p.name}">
+        <div class="img-wrapper">
+          <img src="${getRealImage(p.name, p.id)}" alt="${p.name}" onerror="this.src='https://loremflickr.com/400/400/perfume,bottle?lock=1'">
+        </div>
         <div class="detail-info">
           <span class="brand">${p.brand}</span>
           <h1>${p.name}</h1>
-          <span class="tag">${tagLabel}</span>
+          <div class="tags">
+            <span class="tag gender">${genderLabel}</span>
+            <span class="tag">${originLabel}</span>
+          </div>
           <p class="rating">⭐ ${p.rating} از ۵</p>
-          <div class="price-row"><span class="price">${fmt(p.price)}</span>${p.oldPrice ? `<span class="old-price" style="color:#bbb;text-decoration:line-through;font-size:14px;margin-right:8px">${fmt(p.oldPrice)}</span>` : ''}</div>
-          <p class="desc">این عطر با رایحه‌ای ماندگار و خاص، انتخابی عالی برای استفاده روزانه و مناسبت‌های ویژه است.</p>
+          <div class="price-row" style="margin:10px 0;"><span class="price">${fmt(p.price)}</span>${p.oldPrice ? `<span class="old-price" style="color:#bbb;text-decoration:line-through;font-size:14px;margin-right:8px">${fmt(p.oldPrice)}</span>` : ''}</div>
+          
+          <p class="desc"><strong>توضیحات:</strong> ${p.desc}</p>
+          
+          <div class="notes">
+            <strong>نت‌های بویایی:</strong>
+            ${p.notes}
+          </div>
+          
           <button class="btn-primary" onclick="addToCart(${p.id})">افزودن به سبد خرید</button>
         </div>
       </div>
@@ -285,7 +429,7 @@ function renderCart() {
     if (!p) return '';
     total += p.price * item.qty;
     return `<div class="cart-item">
-      <img src="${p.img}">
+      <div class="img-wrapper"><img src="${getRealImage(p.name, p.id)}" onerror="this.src='https://loremflickr.com/400/400/perfume,bottle?lock=1'"></div>
       <div class="cart-item-info"><strong>${p.name}</strong><span>${fmt(p.price)}</span></div>
       <div class="qty-control"><button onclick="changeQty(${p.id},-1)">−</button><span>${item.qty}</span><button onclick="changeQty(${p.id},1)">+</button></div>
       <button class="remove" onclick="removeItem(${p.id})">🗑</button>
