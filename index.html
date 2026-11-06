@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>عطرینو | فروشگاه ادکلن</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Vazirmatn',Tahoma,sans-serif; background:#f5f5f7; color:#222; }
+a { text-decoration:none; color:inherit; cursor:pointer; }
+.container { max-width:1200px; margin:0 auto; padding:0 16px; }
+
+.top-bar { background:#fff; border-bottom:1px solid #e5e5e5; }
+.top-inner { display:flex; align-items:center; gap:16px; padding:12px 16px; }
+.logo { font-size:28px; font-weight:900; color:#e63946; letter-spacing:-1px; }
+.search-box { flex:1; display:flex; background:#f0f0f2; border-radius:8px; overflow:hidden; border:1px solid #ddd; }
+.search-box input { flex:1; border:none; background:transparent; padding:10px 14px; font-family:inherit; outline:none; font-size:14px; }
+.search-box button { border:none; background:#e63946; color:#fff; padding:0 20px; cursor:pointer; font-size:16px; }
+.cart-link { background:#e63946; color:#fff; padding:9px 16px; border-radius:8px; font-weight:600; font-size:14px; }
+#cart-count { background:#fff; color:#e63946; border-radius:50%; padding:0 6px; font-size:12px; margin-right:3px; }
+
+.main-nav { background:#1d1d2b; }
+.main-nav > .container > ul { display:flex; list-style:none; }
+.main-nav > .container > ul > li { position:relative; }
+.main-nav > .container > ul > li > a { display:block; color:#ddd; padding:12px 20px; font-size:14px; transition:.2s; }
+.main-nav > .container > ul > li > a:hover { background:#e63946; color:#fff; }
+.submenu { display:none; position:absolute; top:100%; right:0; background:#fff; box-shadow:0 4px 12px rgba(0,0,0,.15); border-radius:0 0 8px 8px; min-width:170px; z-index:50; list-style:none; }
+.main-nav li:hover .submenu { display:block; }
+.submenu a { display:block; padding:10px 18px; color:#333; font-size:13px; border-bottom:1px solid #f0f0f0; }
+.submenu a:hover { background:#f5f5f7; color:#e63946; }
+
+.hero { padding:16px 0; }
+.hero-slide { background:linear-gradient(135deg,#1d1d2b,#3a3a5c); color:#fff; border-radius:12px; padding:44px 36px; text-align:center; }
+.hero-slide h1 { font-size:32px; margin-bottom:8px; }
+.hero-slide p { margin-bottom:20px; opacity:.85; font-size:15px; }
+.btn-primary { display:inline-block; background:#e63946; color:#fff; padding:11px 28px; border-radius:8px; font-weight:700; border:none; cursor:pointer; font-family:inherit; font-size:14px; }
+
+.section { padding:28px 0; }
+.section-title { font-size:20px; margin-bottom:18px; border-right:4px solid #e63946; padding-right:10px; font-weight:800; }
+
+.product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
+.product-card { background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 1px 6px rgba(0,0,0,.06); transition:.2s; display:flex; flex-direction:column; position:relative; border:1px solid #eee; }
+.product-card:hover { transform:translateY(-3px); box-shadow:0 6px 18px rgba(0,0,0,.1); }
+.product-card img { width:100%; height:190px; object-fit:cover; background:#eee; cursor:pointer; }
+.product-card .info { padding:12px; display:flex; flex-direction:column; gap:5px; flex:1; }
+.product-card .brand { font-size:11px; color:#999; }
+.product-card .name { font-size:14px; font-weight:600; cursor:pointer; line-height:1.4; }
+.product-card .price-row { display:flex; align-items:center; gap:6px; margin-top:auto; flex-wrap:wrap; }
+.product-card .price { color:#e63946; font-weight:800; font-size:14px; }
+.product-card .old-price { color:#bbb; text-decoration:line-through; font-size:12px; }
+.product-card .add-btn { margin-top:6px; background:#f0f0f2; border:none; padding:8px; border-radius:6px; cursor:pointer; font-family:inherit; font-weight:600; font-size:13px; transition:.2s; }
+.product-card .add-btn:hover { background:#e63946; color:#fff; }
+.badge { position:absolute; top:8px; right:8px; background:#e63946; color:#fff; font-size:10px; padding:3px 8px; border-radius:4px; z-index:2; }
+.badge.arabic { background:#2a9d8f; }
+
+.filter-bar { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
+.filter-btn { padding:8px 18px; border:1px solid #ddd; background:#fff; border-radius:20px; cursor:pointer; font-family:inherit; font-size:13px; transition:.2s; }
+.filter-btn.active { background:#1d1d2b; color:#fff; border-color:#1d1d2b; }
+
+.footer { background:#1d1d2b; color:#aaa; text-align:center; padding:20px; margin-top:30px; font-size:13px; }
+
+.detail-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; background:#fff; padding:22px; border-radius:12px; border:1px solid #eee; }
+.detail-grid img { width:100%; border-radius:10px; object-fit:cover; }
+.detail-info h1 { font-size:24px; margin:6px 0; }
+.detail-info .brand { color:#888; font-size:14px; }
+.detail-info .tag { display:inline-block; background:#eef6f5; color:#2a9d8f; padding:3px 10px; border-radius:4px; font-size:12px; margin:6px 0; }
+.detail-info .rating { margin:8px 0; color:#f59e0b; font-size:14px; }
+.detail-info .desc { color:#555; margin:14px 0; font-size:14px; line-height:1.8; }
+.detail-info .price { font-size:22px; color:#e63946; font-weight:800; }
+.detail-info .btn-primary { background:#e63946; margin-top:16px; }
+
+#cart-box { background:#fff; border-radius:12px; padding:20px; border:1px solid #eee; }
+.empty { text-align:center; padding:40px; color:#999; }
+.cart-item { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #f0f0f0; }
+.cart-item img { width:65px; height:65px; object-fit:cover; border-radius:8px; }
+.cart-item-info { flex:1; display:flex; flex-direction:column; gap:3px; font-size:14px; }
+.qty-control { display:flex; align-items:center; gap:6px; }
+.qty-control button { width:28px; height:28px; border:1px solid #ddd; background:#f9f9f9; border-radius:6px; cursor:pointer; font-size:15px; }
+.remove { background:none; border:none; cursor:pointer; font-size:17px; color:#999; }
+.cart-total { text-align:left; padding:16px 0; font-size:17px; font-weight:700; }
+.checkout { background:#e63946; color:#fff; border:none; padding:13px 30px; border-radius:8px; cursor:pointer; font-family:inherit; font-weight:700; width:100%; font-size:15px; }
+
+@media (max-width:700px) { .detail-grid { grid-template-columns:1fr; } .hero-slide h1 { font-size:22px; } .hero-slide { padding:30px 20px; } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="top-bar">
+    <div class="container top-inner">
+      <a class="logo" onclick="showPage('home')">عطرینو</a>
+      <div class="search-box">
+        <input type="text" id="search-input" placeholder="جستجوی عطر، برند..." oninput="doSearch()">
+        <button>🔍</button>
+      </div>
+      <a class="cart-link" onclick="showPage('cart')">🛒 <span id="cart-count">0</span></a>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <div class="container">
+      <ul>
+        <li><a onclick="showPage('products')">همه محصولات</a></li>
+        <li>
+          <a>عطر مردانه ▾</a>
+          <ul class="submenu">
+            <li><a onclick="showPage('products','men')">همه مردانه</a></li>
+            <li><a onclick="showPage('products','men-classic')">کلاسیک / غیرعربی</a></li>
+            <li><a onclick="showPage('products','men-arabic')">عطر عربی</a></li>
+          </ul>
+        </li>
+        <li>
+          <a>عطر زنانه ▾</a>
+          <ul class="submenu">
+            <li><a onclick="showPage('products','women')">همه زنانه</a></li>
+            <li><a onclick="showPage('products','women-classic')">کلاسیک / غیرعربی</a></li>
+            <li><a onclick="showPage('products','women-arabic')">عطر عربی</a></li>
+          </ul>
+        </li>
+        <li><a onclick="showPage('products','unisex')">یونیسکس</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<main id="app"></main>
+<footer class="footer"><div class="container"><p>© ۱۴۰۴ عطرینو — فروشگاه اینترنتی ادکلن</p></div></footer>
+
+<script>
+const products = [
+  // ---------- کلاسیک مردانه ----------
+  { id:1, name:"دیور ساواج", brand:"Dior", price:4200000, oldPrice:4800000, gender:"men", origin:"classic", img:"https://picsum.photos/seed/dior-sauvage/400/400", rating:4.8, bestSeller:true, isNew:false },
+  { id:2, name:"بلو د شانل", brand:"Chanel", price:3900000, oldPrice:4500000, gender:"men", origin:"classic", img:"https://picsum.photos/seed/chanel-blue/400/400", rating:4.7, bestSeller:true, isNew:false },
+  { id:3, name:"آکوا دی جیو", brand:"Giorgio Armani", price:3600000, oldPrice:0, gender:"men", origin:"classic", img:"https://picsum.photos/seed/armani-aqua/400/400", rating:4.6, bestSeller:false, isNew:true },
+  { id:4, name:"کرید اونتوس", brand:"Creed", price:8900000, oldPrice:9500000, gender:"men", origin:"classic", img:"https://picsum.photos/seed/creed-aventus/400/400", rating:4.9, bestSeller:true, isNew:false },
+  { id:5, name:"توم فورد نویر", brand:"Tom Ford", price:7200000, oldPrice:0, gender:"men", origin:"classic", img:"https://picsum.photos/seed/tomford-noir/400/400", rating:4.7, bestSeller:false, isNew:true },
+  // ---------- کلاسیک زنانه ----------
+  { id:6, name:"کوکو مادمازل", brand:"Chanel", price:5100000, oldPrice:0, gender:"women", origin:"classic", img:"https://picsum.photos/seed/chanel-coco/400/400", rating:4.9, bestSeller:true, isNew:false },
+  { id:7, name:"میس دیور", brand:"Dior", price:4600000, oldPrice:5200000, gender:"women", origin:"classic", img:"https://picsum.photos/seed/dior-miss/400/400", rating:4.8, bestSeller:true, isNew:false },
+  { id:8, name:"لانکوم لا وی است بل", brand:"Lancome", price:4300000, oldPrice:0, gender:"women", origin:"classic", img:"https://picsum.photos/seed/lancome-vie/400/400", rating:4.6, bestSeller:false, isNew:true },
+  { id:9, name:"ایو سن لورن مون پاریس", brand:"YSL", price:4900000, oldPrice:0, gender:"women", origin:"classic", img:"https://picsum.photos/seed/ysl-paris/400/400", rating:4.7, bestSeller:false, isNew:true },
+  { id:10, name:"گورلن لا پتیت روب نوآر", brand:"Guerlain", price:5500000, oldPrice:6000000, gender:"women", origin:"classic", img:"https://picsum.photos/seed/guerlain-noir/400/400", rating:4.5, bestSeller:false, isNew:false },
+  // ---------- عربی مردانه ----------
+  { id:11, name:"لطافه خمره", brand:"Lattafa", price:1800000, oldPrice:2200000, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/lattafa-khamrah/400/400", rating:4.7, bestSeller:true, isNew:false },
+  { id:12, name:"افنان ۹ پی ام", brand:"Afnan", price:1500000, oldPrice:0, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/afnan-9pm/400/400", rating:4.5, bestSeller:true, isNew:false },
+  { id:13, name:"آرماف کلاب دی نویت", brand:"Armaf", price:1700000, oldPrice:2000000, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/armaf-club/400/400", rating:4.8, bestSeller:true, isNew:false },
+  { id:14, name:"رصاصی هاواس", brand:"Rasasi", price:1900000, oldPrice:0, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/rasasi-hawas/400/400", rating:4.6, bestSeller:false, isNew:true },
+  { id:15, name:"لطافه رامز سیلور", brand:"Lattafa", price:1300000, oldPrice:1600000, gender:"men", origin:"arabic", img:"https://picsum.photos/seed/lattafa-ramz/400/400", rating:4.4, bestSeller:false, isNew:true },
+  // ---------- عربی زنانه ----------
+  { id:16, name:"لطافه یارا", brand:"Lattafa", price:1400000, oldPrice:0, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/lattafa-yara/400/400", rating:4.6, bestSeller:true, isNew:false },
+  { id:17, name:"افنان ۹ پی ام پور فم", brand:"Afnan", price:1600000, oldPrice:1900000, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/afnan-pourfem/400/400", rating:4.5, bestSeller:false, isNew:true },
+  { id:18, name:"سوییس آرابین لیلی", brand:"Swiss Arabian", price:1200000, oldPrice:0, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/swiss-layali/400/400", rating:4.3, bestSeller:false, isNew:false },
+  { id:19, name:"اجمل امیر", brand:"Ajmal", price:2100000, oldPrice:2400000, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/ajmal-amir/400/400", rating:4.4, bestSeller:false, isNew:false },
+  { id:20, name:"الحمرا آنا", brand:"Al Haramain", price:1700000, oldPrice:0, gender:"women", origin:"arabic", img:"https://picsum.photos/seed/haramain-ana/400/400", rating:4.2, bestSeller:false, isNew:true },
+];
+
+const fmt = n => n.toLocaleString('fa-IR') + ' تومان';
+const getCart = () => JSON.parse(localStorage.getItem('cart') || '[]');
+const saveCart = c => { localStorage.setItem('cart', JSON.stringify(c)); updateCartCount(); };
+const updateCartCount = () => {
+  const el = document.getElementById('cart-count');
+  if (el) el.textContent = getCart().reduce((s,i)=>s+i.qty,0).toLocaleString('fa-IR');
+};
+const addToCart = id => {
+  const cart = getCart();
+  const f = cart.find(i=>i.id===id);
+  if (f) f.qty++; else cart.push({id,qty:1});
+  saveCart(cart);
+  alert('به سبد خرید اضافه شد ✅');
+};
+
+function productCard(p) {
+  const badgeLabel = p.origin === 'arabic' ? 'عربی' : '';
+  const badgeClass = p.origin === 'arabic' ? 'badge arabic' : 'badge';
+  return `
+    <div class="product-card">
+      ${badgeLabel ? `<span class="${badgeClass}">${badgeLabel}</span>` : (p.oldPrice ? '<span class="badge">تخفیف</span>' : '')}
+      <img src="${p.img}" alt="${p.name}" onclick="showPage('product',${p.id})" loading="lazy">
+      <div class="info">
+        <span class="brand">${p.brand}</span>
+        <span class="name" onclick="showPage('product',${p.id})">${p.name}</span>
+        <div class="price-row">
+          <span class="price">${fmt(p.price)}</span>
+          ${p.oldPrice ? `<span class="old-price">${fmt(p.oldPrice)}</span>` : ''}
+        </div>
+        <button class="add-btn" onclick="addToCart(${p.id})">افزودن به سبد</button>
+      </div>
+    </div>`;
+}
+
+let currentFilter = 'all';
+
+function showPage(page, param) {
+  const app = document.getElementById('app');
+  currentFilter = 'all';
+  if (page === 'home') {
+    app.innerHTML = `
+      <section class="hero"><div class="container"><div class="hero-slide">
+        <h1>عطر خودت را پیدا کن</h1>
+        <p>کلاسیک یا عربی؟ انتخاب با شماست</p>
+        <button class="btn-primary" onclick="showPage('products')">مشاهده محصولات</button>
+      </div></div></section>
+      <section class="section"><div class="container">
+        <h2 class="section-title">پرفروش‌ترین‌ها</h2>
+        <div class="product-grid">${products.filter(p=>p.bestSeller).slice(0,8).map(productCard).join('')}</div>
+      </div></section>
+      <section class="section"><div class="container">
+        <h2 class="section-title">جدیدترین‌ها</h2>
+        <div class="product-grid">${products.filter(p=>p.isNew).slice(0,8).map(productCard).join('')}</div>
+      </div></section>`;
+  } else if (page === 'products') {
+    renderProductList(param || 'all');
+  } else if (page === 'product') {
+    const p = products.find(x=>x.id===param) || products[0];
+    const tagLabel = p.origin === 'arabic' ? 'عطر عربی' : 'کلاسیک / غیرعربی';
+    app.innerHTML = `<section class="section"><div class="container">
+      <div class="detail-grid">
+        <img src="${p.img}" alt="${p.name}">
+        <div class="detail-info">
+          <span class="brand">${p.brand}</span>
+          <h1>${p.name}</h1>
+          <span class="tag">${tagLabel}</span>
+          <p class="rating">⭐ ${p.rating} از ۵</p>
+          <div class="price-row"><span class="price">${fmt(p.price)}</span>${p.oldPrice ? `<span class="old-price" style="color:#bbb;text-decoration:line-through;font-size:14px;margin-right:8px">${fmt(p.oldPrice)}</span>` : ''}</div>
+          <p class="desc">این عطر با رایحه‌ای ماندگار و خاص، انتخابی عالی برای استفاده روزانه و مناسبت‌های ویژه است.</p>
+          <button class="btn-primary" onclick="addToCart(${p.id})">افزودن به سبد خرید</button>
+        </div>
+      </div>
+    </div></section>`;
+  } else if (page === 'cart') {
+    renderCart();
+  }
+  updateCartCount();
+  window.scrollTo(0,0);
+}
+
+function renderProductList(filter) {
+  const app = document.getElementById('app');
+  let list = products;
+  let title = 'همه محصولات';
+  let showOriginFilter = false;
+
+  if (filter === 'men') { list = products.filter(p=>p.gender==='men'); title = 'عطر مردانه'; showOriginFilter = true; }
+  else if (filter === 'women') { list = products.filter(p=>p.gender==='women'); title = 'عطر زنانه'; showOriginFilter = true; }
+  else if (filter === 'unisex') { list = products.filter(p=>p.gender==='unisex'); title = 'یونیسکس'; }
+  else if (filter === 'men-classic') { list = products.filter(p=>p.gender==='men' && p.origin==='classic'); title = 'عطر مردانه کلاسیک'; }
+  else if (filter === 'men-arabic') { list = products.filter(p=>p.gender==='men' && p.origin==='arabic'); title = 'عطر مردانه عربی'; }
+  else if (filter === 'women-classic') { list = products.filter(p=>p.gender==='women' && p.origin==='classic'); title = 'عطر زنانه کلاسیک'; }
+  else if (filter === 'women-arabic') { list = products.filter(p=>p.gender==='women' && p.origin==='arabic'); title = 'عطر زنانه عربی'; }
+
+  let filterBar = '';
+  if (showOriginFilter && !filter.includes('-')) {
+    filterBar = `<div class="filter-bar">
+      <button class="filter-btn ${currentFilter==='all'?'active':''}" onclick="applyFilter('all','${filter}')">همه</button>
+      <button class="filter-btn ${currentFilter==='classic'?'active':''}" onclick="applyFilter('classic','${filter}')">کلاسیک / غیرعربی</button>
+      <button class="filter-btn ${currentFilter==='arabic'?'active':''}" onclick="applyFilter('arabic','${filter}')">عطر عربی</button>
+    </div>`;
+    if (currentFilter !== 'all') {
+      list = list.filter(p => p.origin === currentFilter);
+    }
+  }
+
+  app.innerHTML = `<section class="section"><div class="container">
+    <h2 class="section-title">${title}</h2>
+    ${filterBar}
+    <div class="product-grid">${list.length ? list.map(productCard).join('') : '<p class="empty">محصولی یافت نشد</p>'}</div>
+  </div></section>`;
+}
+
+function applyFilter(f, gender) {
+  currentFilter = f;
+  renderProductList(gender);
+}
+
+function renderCart() {
+  const app = document.getElementById('app');
+  const cart = getCart();
+  if (!cart.length) {
+    app.innerHTML = `<section class="section"><div class="container"><h2 class="section-title">سبد خرید</h2><div id="cart-box"><p class="empty">سبد خرید شما خالی است 🛍️</p></div></div></section>`;
+    return;
+  }
+  let total = 0;
+  const items = cart.map(item => {
+    const p = products.find(x=>x.id===item.id);
+    if (!p) return '';
+    total += p.price * item.qty;
+    return `<div class="cart-item">
+      <img src="${p.img}">
+      <div class="cart-item-info"><strong>${p.name}</strong><span>${fmt(p.price)}</span></div>
+      <div class="qty-control"><button onclick="changeQty(${p.id},-1)">−</button><span>${item.qty}</span><button onclick="changeQty(${p.id},1)">+</button></div>
+      <button class="remove" onclick="removeItem(${p.id})">🗑</button>
+    </div>`;
+  }).join('');
+  app.innerHTML = `<section class="section"><div class="container">
+    <h2 class="section-title">سبد خرید</h2>
+    <div id="cart-box">${items}
+      <div class="cart-total">جمع کل: ${fmt(total)}</div>
+      <button class="checkout">ثبت سفارش</button>
+    </div>
+  </div></section>`;
+}
+function changeQty(id, d) {
+  const cart = getCart();
+  const item = cart.find(i=>i.id===id);
+  if (!item) return;
+  item.qty += d;
+  if (item.qty <= 0) return removeItem(id);
+  saveCart(cart); renderCart();
+}
+function removeItem(id) { saveCart(getCart().filter(i=>i.id!==id)); renderCart(); }
+
+function doSearch() {
+  const q = document.getElementById('search-input').value.trim();
+  const app = document.getElementById('app');
+  if (!q) return showPage('home');
+  const list = products.filter(p => p.name.includes(q) || p.brand.toLowerCase().includes(q.toLowerCase()));
+  app.innerHTML = `<section class="section"><div class="container">
+    <h2 class="section-title">نتایج جستجو برای «${q}»</h2>
+    <div class="product-grid">${list.length ? list.map(productCard).join('') : '<p class="empty">محصولی یافت نشد</p>'}</div>
+  </div></section>`;
+}
+
+showPage('home');
+</script>
+</body>
+</html>
